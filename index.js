@@ -55,23 +55,25 @@ const server = http.createServer((req, res) => {
     let contentType = 'text/html';
 
     // Check ext and set content type
-    switch(extname) {
-        case '.js':
-            contentType = 'text/javascript';
-            break;
-        case '.css':
-            contentType = 'text/css';
-            break;
-        case '.json':
-            contentType = 'application/json';
-            break;
-        case '.png':
-            contentType = 'image/png';
-            break;
-        case '.jpg':
-            contentType = 'image/jpg';
-            break;
+    switch (extname) {
+        case ".js":
+          contentType = "text/javascript";
+          break;
+        case ".css":
+          contentType = "text/css";
+          break;
+        case ".json":
+          contentType = "application/json";
+          break;
+        case ".png":
+          contentType = "image/png";
+          break;
+        case ".jpg":
+          contentType = "image/jpg";
+          break;
     }
+
+    if (contentType == "text/html" && extname == "") filePath += ".html";
 
     // Read File
     fs.readFile(filePath, (err, content) => {
@@ -79,7 +81,7 @@ const server = http.createServer((req, res) => {
             if(err.code == 'ENOENT') {
                 // page isn't found 
                 fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
-                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    res.writeHead(404, { 'Content-Type': 'text/html' });
                     res.end(content, 'utf8');
                 })
             } else {
@@ -97,7 +99,7 @@ const server = http.createServer((req, res) => {
 });
 
 // environment variable || 5000 (not found)
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

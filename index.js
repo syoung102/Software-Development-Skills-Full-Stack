@@ -97,7 +97,7 @@ const server = http.createServer((req, res) => {
 });
 
 // environment variable || 5000 (not found)
-const PORT = process.env.PORT || port;
+const PORT = process.env.PORT;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

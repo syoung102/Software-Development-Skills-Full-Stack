@@ -23,7 +23,6 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
-const { resourceUsage } = require('process');
 
 const port = 3000;
 
@@ -35,6 +34,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Body Parser Middleware - when user submit a form, you can grab the data
 app.use(bodyParser.json());
+
+// Passport Middleware - 클라이언트가 서버에 요청할 자격이 있는지 인증
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 app.use('/users', users);
 

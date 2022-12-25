@@ -11,7 +11,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { Router } from '@angular/router/src';
+
+import { ValidateService } from './services/validate.service';
+import { FlashMessagesModule } from'angular2-flash-messages';
 
 // 라우팅 매핑 정보를 취급하는 Route 객체 보관
 const appRoutes: Routes = [
@@ -38,9 +40,10 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     // 라우팅 매핑 정보를 RouterModule 모듈에 static 함수 forRoot에게 전달
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FlashMessagesModule
   ],
-  providers: [],
+  providers: [ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

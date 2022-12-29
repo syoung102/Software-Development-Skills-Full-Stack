@@ -24,7 +24,8 @@ const app = express();
 
 const users = require('./routes/users');
 
-const port = 3000;
+// Port Number
+const port = process.env.PORT || 3000;
 
 // Cors Middleware - they would get blocked if they try to do certatin requests
 app.use(cors());
@@ -46,6 +47,10 @@ app.use('/users', users);
 // Index Route- When user enter with get, execute call-back function
 app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // Start Server

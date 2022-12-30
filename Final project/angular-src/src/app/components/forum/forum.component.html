@@ -1,3 +1,14 @@
-<p>
-  forum works!
-</p>
+<h2 class="page-header" >Forum</h2>
+<form class="form-signin" (submit)="onPost()">
+  <div class="form-group">
+    <label for="Content">Content</label>
+    <input type="text" class="form-control" placeholder="Content" [(ngModel)]="content" name="content">
+  </div>
+  <input class="btn btn-primary" type="submit" value="Post">      
+</form>
+<br>
+<div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let forums of forum; let cnt = count; let i = index;" [attr.id]="'num' + ( cnt - i - 1 )">{{forums.username}}: {{forums.content}}</li>
+  </ul>
+</div>

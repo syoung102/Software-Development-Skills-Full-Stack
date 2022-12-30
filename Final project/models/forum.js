@@ -25,6 +25,10 @@ module.exports.getForumByUsername = function(username, callback) {
   Forum.findOne(query, callback);
 }
 
+module.exports.getForum = function(callback) {
+  Forum.find({}, callback);
+}
+
 module.exports.postForum = function(newForum, callback) {
   newForum.save(callback);
 }

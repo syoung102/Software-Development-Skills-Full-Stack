@@ -24,6 +24,7 @@ const app = express();
 const users = require('./routes/users');
 const forums = require('./routes/forums');
 
+
 // Server port number
 const port = 3000;
 

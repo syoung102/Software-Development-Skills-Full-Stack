@@ -1,6 +1,5 @@
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const User = require('../models/user');
 const Forum = require('../models/forum');
 const config = require('../config/database');
 
@@ -9,12 +8,12 @@ module.exports = function(passport) {
   opts.jwtFromRequest = ExtractJwt.fromAuthHeader('jwt');
   opts.secretOrKey = config.secret;
   passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-    User.getUserById(jwt_payload.data._id, (err, user) => {
+    Forum.getForumById(jwt_payload.data._id, (err, forum) => {
       if(err) {
         return done(err, false);
       }
       if(user) {
-        return done(null, user);
+        return done(null, forum);
       } else {
         return done(null, false);
       }

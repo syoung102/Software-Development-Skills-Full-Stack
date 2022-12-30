@@ -11,10 +11,13 @@ There is a talk forum in my project. I added a new schema.
 
 I implemented a function that allows users to send and receive data in a small talk form like getProfile(), postComment(), onPost() and so on.
 
+<br>
+<br>
 
 ### Learning Diary
 [learning_diary_full_stack.pdf](https://github.com/syoung102/Software-Development-Skills-Full-Stack/files/10317051/learning_diary_full_stack.pdf)
 
+<br>
 <br>
 
 ### A video of my project running
